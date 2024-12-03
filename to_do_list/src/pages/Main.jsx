@@ -1,4 +1,5 @@
 import Header from "../components/Header"
+import ListaTarefas from "../components/ListaTarefas"
 import NovaTarefa from "../components/NovaTarefa"
 
 function Main() {
@@ -9,8 +10,11 @@ function Main() {
             <div className="mb-5">
                 <Header />
             </div>  
-            <div>
+            <div className="mb-5">
                 <NovaTarefa />
+            </div>
+            <div>
+              <ListaTarefas />
             </div>
         </div> 
     </>
