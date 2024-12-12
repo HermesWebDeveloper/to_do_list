@@ -1,8 +1,11 @@
+import { useState } from "react";
 import Header from "../components/Header"
 import ListaTarefas from "../components/ListaTarefas"
 import NovaTarefa from "../components/NovaTarefa"
 
 function Main() {
+
+  const [reload, setReload] = useState(false);
 
   return (
     <>
@@ -11,10 +14,10 @@ function Main() {
                 <Header />
             </div>  
             <div className="mb-5">
-                <NovaTarefa />
+                <NovaTarefa reload={reload} setReload={setReload} />
             </div>
             <div>
-              <ListaTarefas />
+              <ListaTarefas reload={reload} setReload={setReload} />
             </div>
         </div> 
     </>
