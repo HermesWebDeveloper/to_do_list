@@ -1,25 +1,28 @@
 import { useState } from "react";
 import axios from 'axios';
 
-function NovaTarefa({reload, setReload}){
+function NovaTarefa({key, tarefas, tarefa, setReload, setTarefas}){
 
-    const [tarefa, setTarefa] = useState('');
+    const [novaTarefa, setNovaTarefa] = useState('');
 
     function handleChangeTarefa(event){
-        setTarefa(event.target.value);
+        setNovaTarefa(event.target.value);
     };
 
     const sendNovaTarefa = async () => {
-        const dados = { descricao: tarefa }
+
+        setTarefas([...tarefas, novaTarefa]);
+
+        const dados = { descricao: novaTarefa }
         try {
-            setTarefa('');
+            setNovaTarefa('');
             const response = await axios.post('https://back-to-do-list.onrender.com/v1/tarefas/', dados);
             // console.log('Resposta da API:', response.data);
             setReload(true);
         } catch (error) {
             console.error('Erro ao enviar nova tarefa:', error);
         }   
-    };    
+    };
 
     return(
         <>
@@ -28,7 +31,7 @@ function NovaTarefa({reload, setReload}){
                     <button className="text-2xl" onClick={() => (sendNovaTarefa(tarefa))}>+</button>
                 </div>
                 <div className="px-3">
-                    <input className="sm:w-[600px] w-[250px] focus:outline-none dark:bg-zinc-800" placeholder="Digite uma tarefa" value={tarefa} onChange={handleChangeTarefa}></input>
+                    <input className="sm:w-[600px] w-[250px] focus:outline-none dark:bg-zinc-800" placeholder="Digite uma tarefa" value={novaTarefa} onChange={handleChangeTarefa}></input>
                 </div>
             </div>
         </>

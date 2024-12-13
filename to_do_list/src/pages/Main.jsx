@@ -1,12 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "../components/Header"
 import ListaTarefas from "../components/ListaTarefas"
 import NovaTarefa from "../components/NovaTarefa"
+import axios from "axios";
 
 function Main() {
 
   const [reload, setReload] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
+  const [tarefas, setTarefas] = useState([{}]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect( () => {
+    const fetchTarefas = async () => {
+        try {
+            const response = await axios.get('https://back-to-do-list.onrender.com/v1/tarefas/');
+            setTarefas(response.data);
+            setReload(false);
+            setLoading(false);
+        } catch (error) {
+            console.log('Erro ao buscar tarefas: ', error);
+        }
+    }
+
+    fetchTarefas();
+}, [tarefas]);
 
   return (
     <>
@@ -15,10 +33,10 @@ function Main() {
                 <Header />
             </div>  
             <div className="mb-5">
-                <NovaTarefa reload={reload} setReload={setReload} />
+                <NovaTarefa reload={reload} setReload={setReload} tarefas={tarefas} setTarefas={setTarefas} />
             </div>
             <div>
-              <ListaTarefas reload={reload} setReload={setReload} />
+              <ListaTarefas reload={reload} setReload={setReload} tarefas={tarefas} setTarefas={setTarefas} loading={loading} />
             </div>
         </div> 
     </>

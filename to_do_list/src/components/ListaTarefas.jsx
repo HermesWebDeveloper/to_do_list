@@ -2,25 +2,7 @@ import { useEffect, useState } from "react";
 import Tarefa from "./Tarefa";
 import axios from "axios";
 
-function ListaTarefas({reload, setReload}){
-
-    const [lista_tarefas, setLista_tarefas] = useState([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect( () => {
-        const fetchTarefas = async () => {
-            try {
-                const response = await axios.get('https://back-to-do-list.onrender.com/v1/tarefas/');
-                setLista_tarefas(response.data);
-                setReload(false);
-                setLoading(false);
-            } catch (error) {
-                console.log('Erro ao buscar tarefas: ', error);
-            }
-        }
-
-        fetchTarefas();
-    }, [reload]);
+function ListaTarefas({loading, setReload, tarefas, setTarefas}){
 
     if(loading){
         return <div className="dark:text-white">Carregando...</div>
@@ -30,8 +12,8 @@ function ListaTarefas({reload, setReload}){
         <>
             <div className="">
                 <ul>
-                    {lista_tarefas.map((tarefa) => (
-                        <Tarefa tarefa={tarefa} key={tarefa.id} setReload={setReload}/>
+                    {tarefas.map((tarefa) => (
+                        <Tarefa tarefa={tarefa} key={tarefa.id} setTarefas={setTarefas} tarefas={tarefas} setReload={setReload}/>
                     ))}
                 </ul>
             </div>
