@@ -13,7 +13,7 @@ function NovaTarefa({reload, setReload}){
         const dados = { descricao: tarefa }
         try {
             setTarefa('');
-            const response = await axios.post('http://localhost:10000/v1/tarefas/', dados);
+            const response = await axios.post('https://back-to-do-list.onrender.com/v1/tarefas/', dados);
             // console.log('Resposta da API:', response.data);
             setReload(true);
         } catch (error) {
