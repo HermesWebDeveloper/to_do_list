@@ -31,7 +31,7 @@ function ListaTarefas({reload, setReload}){
             <div>
                 <ul>
                     {lista_tarefas.map((tarefa) => (
-                        <Tarefa tarefa={tarefa} key={tarefa.id}/>
+                        <Tarefa tarefa={tarefa} key={tarefa.id} setReload={setReload}/>
                     ))}
                 </ul>
             </div>
