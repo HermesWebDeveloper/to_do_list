@@ -6,6 +6,7 @@ import NovaTarefa from "../components/NovaTarefa"
 function Main() {
 
   const [reload, setReload] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
 
   return (
     <>

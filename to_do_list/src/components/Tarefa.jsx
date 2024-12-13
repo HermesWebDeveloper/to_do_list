@@ -45,7 +45,7 @@ function Tarefa({tarefa, setReload}){
 
     return(
         <>
-            <div className="my-3 flex flex-row items-center gap-2 border border-slate-800 rounded-lg px-3 py-2 w-[674px]">
+            <div className="my-3 flex flex-row items-center gap-2 border border-slate-800 rounded-lg px-3 py-2 w-[674px] dark:border-white dark:text-white">
                 <div>
                     <input 
                         type="checkbox" 
@@ -57,8 +57,8 @@ function Tarefa({tarefa, setReload}){
                     <div className={checked ? 'line-through' : ''}>
                         {tarefa.descricao}
                     </div>
-                    <button onClick={() => deletarTarefa()} className="ml-1 text-white hover:text-red-600 cursor-pointer">
-                        x
+                    <button onClick={() => deletarTarefa()} className="ml-1 align-middle text-white hover:text-red-600 cursor-pointer dark:text-zinc-800 dark:hover:text-red-400">
+                        X
                     </button>
                 </div>
             </div>

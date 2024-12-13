@@ -1,10 +1,16 @@
+import AlternarTema from "./AlternarTema";
 
 
 function Header(){
 
     return(
         <>
-            <h1 className="text-4xl font-semibold">Lista de Tarefas</h1>
+            <div className="flex flex-row">
+                <h1 className="text-4xl font-semibold dark:text-white">Lista de Tarefas</h1>
+                <div className="ml-4">
+                    <AlternarTema />
+                </div>
+            </div>
         </>
     )
 };

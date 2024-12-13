@@ -23,12 +23,12 @@ function NovaTarefa({reload, setReload}){
 
     return(
         <>
-            <div className="flex flex-row border rounded-full border-black items-center">
-                <div className="pr-3 pl-5 py-1 border-r-black border-r">
+            <div className="flex flex-row border rounded-full border-black items-center dark:border-white dark:text-white">
+                <div className="pr-3 pl-5 py-1 border-r-black border-r dark:border-r-white">
                     <button className="text-2xl" onClick={() => (sendNovaTarefa(tarefa))}>+</button>
                 </div>
                 <div className="px-3">
-                    <input className="w-[600px] focus:outline-none" placeholder="Digite uma tarefa" value={tarefa} onChange={handleChangeTarefa}></input>
+                    <input className="w-[600px] focus:outline-none dark:bg-zinc-800" placeholder="Digite uma tarefa" value={tarefa} onChange={handleChangeTarefa}></input>
                 </div>
             </div>
         </>
