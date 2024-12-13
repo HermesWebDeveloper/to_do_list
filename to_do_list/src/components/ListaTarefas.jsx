@@ -23,7 +23,7 @@ function ListaTarefas({reload, setReload}){
     }, [reload]);
 
     if(loading){
-        return <div>Carregando...</div>
+        return <div className="dark:text-white">Carregando...</div>
     }
 
     return(
