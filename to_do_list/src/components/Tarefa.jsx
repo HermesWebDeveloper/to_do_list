@@ -11,14 +11,21 @@ function Tarefa({tarefa}){
     };
 
     useEffect( () => {
-        // const atualizarTarefa = () => {
-        //     try {
-        //         const response = await axios.put('http://localhost:10000/v1/tarefas/${tarefa.id}', {
-        //             tarefa
-        //         });
-        //     }
-        // }
-    }, [tarefa.checked]);
+        const atualizarTarefa = async (sendTarefa) => {
+            try {
+                const { descricao } = tarefa;
+                const response = await axios.put(`http://localhost:10000/v1/tarefas/${tarefa.id}`, {
+                    descricao,
+                    checked
+                });
+                // console.log('Tarefa atualizada: ', response.data);
+            } catch (error) {
+                console.log('Erro ao atualizar tarefa: ', error);
+            }
+        };
+
+        atualizarTarefa();
+    }, [checked, tarefa]);
 
     return(
         <>

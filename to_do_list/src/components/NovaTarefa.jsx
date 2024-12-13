@@ -13,7 +13,7 @@ function NovaTarefa({reload, setReload}){
         const dados = { descricao: tarefa }
         try {
             const response = await axios.post('http://localhost:10000/v1/tarefas/', dados);
-            console.log('Resposta da API:', response.data);
+            // console.log('Resposta da API:', response.data);
             setReload(true);
         } catch (error) {
             console.error('Erro ao enviar nova tarefa:', error);
