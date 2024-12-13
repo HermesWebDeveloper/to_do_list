@@ -28,7 +28,7 @@ function NovaTarefa({reload, setReload}){
                     <button className="text-2xl" onClick={() => (sendNovaTarefa(tarefa))}>+</button>
                 </div>
                 <div className="px-3">
-                    <input className="w-[600px] focus:outline-none dark:bg-zinc-800" placeholder="Digite uma tarefa" value={tarefa} onChange={handleChangeTarefa}></input>
+                    <input className="sm:w-[600px] w-[250px] focus:outline-none dark:bg-zinc-800" placeholder="Digite uma tarefa" value={tarefa} onChange={handleChangeTarefa}></input>
                 </div>
             </div>
         </>

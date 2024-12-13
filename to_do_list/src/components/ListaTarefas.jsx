@@ -28,7 +28,7 @@ function ListaTarefas({reload, setReload}){
 
     return(
         <>
-            <div>
+            <div className="">
                 <ul>
                     {lista_tarefas.map((tarefa) => (
                         <Tarefa tarefa={tarefa} key={tarefa.id} setReload={setReload}/>
