@@ -10,7 +10,7 @@ function ListaTarefas({reload, setReload}){
     useEffect( () => {
         const fetchTarefas = async () => {
             try {
-                const response = await axios.get('http://localhost:10000/v1/tarefas/');
+                const response = await axios.get('https://back-to-do-list.onrender.com/v1/tarefas/');
                 setLista_tarefas(response.data);
                 setReload(false);
                 setLoading(false);
