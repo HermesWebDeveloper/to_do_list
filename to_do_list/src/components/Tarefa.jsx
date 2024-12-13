@@ -57,7 +57,7 @@ function Tarefa({tarefa, setReload}){
                     <div className={`${checked ? 'line-through' : ''} break-words max-w-full`}>
                         {tarefa.descricao}
                     </div>
-                    <button onClick={() => deletarTarefa()} className="ml-1 align-middle text-red-200 hover:text-red-600 cursor-pointer dark:text-zinc-800 dark:hover:text-red-400 dark:text-red-900">
+                    <button onClick={() => deletarTarefa()} className="ml-1 align-middle text-red-200 hover:text-red-500 cursor-pointer dark:hover:text-red-500 dark:text-red-900">
                         X
                     </button>
                 </div>
