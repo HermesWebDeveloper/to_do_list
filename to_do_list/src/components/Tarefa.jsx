@@ -18,7 +18,7 @@ function Tarefa({tarefa, setReload}){
             try {
         
                 const { descricao } = tarefa;
-                const response = await axios.put(`https://back-to-do-list.onrender.com/v1/tarefas/${tarefa.id}`, {
+                const response = await axios.put(`${import.meta.env.VITE_URL_API}/v1/tarefas/${tarefa.id}`, {
                     descricao,
                     checked
                 });
@@ -35,7 +35,7 @@ function Tarefa({tarefa, setReload}){
 
     const deletarTarefa = async () => {
         try {
-            setIsDelet(true);
+            
             const response = await axios.delete(`https://back-to-do-list.onrender.com/v1/tarefas/${tarefa.id}`);
             setReload(true);
         } catch(error) {

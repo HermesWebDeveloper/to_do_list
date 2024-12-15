@@ -8,13 +8,13 @@ function Main() {
 
   const [reload, setReload] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
-  const [tarefas, setTarefas] = useState([{}]);
+  const [tarefas, setTarefas] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect( () => {
     const fetchTarefas = async () => {
         try {
-            const response = await axios.get('https://back-to-do-list.onrender.com/v1/tarefas/');
+            const response = await axios.get(`${import.meta.env.VITE_URL_API}/v1/tarefas/`);
             setTarefas(response.data);
             setReload(false);
             setLoading(false);
@@ -24,7 +24,7 @@ function Main() {
     }
 
     fetchTarefas();
-}, [tarefas]);
+}, [reload]);
 
   return (
     <>

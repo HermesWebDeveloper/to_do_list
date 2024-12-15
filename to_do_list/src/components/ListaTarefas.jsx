@@ -13,7 +13,9 @@ function ListaTarefas({loading, setReload, tarefas, setTarefas}){
             <div className="">
                 <ul>
                     {tarefas.map((tarefa) => (
-                        <Tarefa tarefa={tarefa} key={tarefa.id} setTarefas={setTarefas} tarefas={tarefas} setReload={setReload}/>
+                        <li key={tarefa.id}>
+                            <Tarefa tarefa={tarefa} setTarefas={setTarefas} tarefas={tarefas} setReload={setReload}/>
+                        </li>
                     ))}
                 </ul>
             </div>

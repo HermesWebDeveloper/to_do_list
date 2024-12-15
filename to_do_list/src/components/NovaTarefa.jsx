@@ -16,7 +16,7 @@ function NovaTarefa({key, tarefas, tarefa, setReload, setTarefas}){
         const dados = { descricao: novaTarefa }
         try {
             setNovaTarefa('');
-            const response = await axios.post('https://back-to-do-list.onrender.com/v1/tarefas/', dados);
+            const response = await axios.post(`${import.meta.env.VITE_URL_API}/v1/tarefas/`, dados);
             // console.log('Resposta da API:', response.data);
             setReload(true);
         } catch (error) {
