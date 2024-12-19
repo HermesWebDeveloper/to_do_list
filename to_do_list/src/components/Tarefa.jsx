@@ -1,43 +1,44 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-
-function Tarefa({tarefa, setReload}){
+function Tarefa({tarefa, setLoading}){
     
-    const [checked, setChecked] = useState(tarefa.checked ?? false)
-    const [isDelet, setIsDelet] = useState(false);
+    // Cria variável para controlar status da tarefa
+    const [checked, setChecked] = useState(tarefa.checked ?? false);
 
+    // Função para mudar o status da tarefa
     const handleCheckboxChange = () => {
         setChecked(!checked);
     };
 
-    useEffect( () => {
-        if (!tarefa || !tarefa.id || isDelet) return;
-
+    useEffect(() => {
+        // Função de atualizar os dados da tarefa na API
         const atualizarTarefa = async (sendTarefa) => {
             try {
-        
                 const { descricao } = tarefa;
                 const response = await axios.put(`${import.meta.env.VITE_URL_API}/v1/tarefas/${tarefa.id}`, {
                     descricao,
                     checked
                 });
-
-                setReload(true);
-                // console.log('Tarefa atualizada: ', response.data);
+                
+                setLoading(true);
             } catch (error) {
                 console.log('Erro ao atualizar tarefa: ', error);
             }
         };
-
+    
         atualizarTarefa();
-    }, [checked, tarefa, isDelet]);
+    }, [checked]);
 
+    // Função para deletar a tarefa
     const deletarTarefa = async () => {
+
+        // Exibindo informação de carregamento
+        setLoading(true);
+
         try {
-            
+            // Deleção da tarefa na API
             const response = await axios.delete(`https://back-to-do-list.onrender.com/v1/tarefas/${tarefa.id}`);
-            setReload(true);
         } catch(error) {
             console.log('Erro ao deletar tarefa: ', error);
         }
@@ -55,7 +56,7 @@ function Tarefa({tarefa, setReload}){
                 </div>
                 <div className="flex flex-row">
                     <div className={`${checked ? 'line-through' : ''} break-words max-w-full`}>
-                        {tarefa.descricao}
+                        {"Descrição da tarefa: " + tarefa.descricao}
                     </div>
                     <button onClick={() => deletarTarefa()} className="ml-1 align-middle text-red-200 hover:text-red-500 cursor-pointer dark:hover:text-red-500 dark:text-red-900">
                         X

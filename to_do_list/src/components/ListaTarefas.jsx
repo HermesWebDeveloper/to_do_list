@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Tarefa from "./Tarefa";
 import axios from "axios";
 
-function ListaTarefas({loading, setReload, tarefas, setTarefas}){
+function ListaTarefas({setLoading, loading, tarefas, setTarefas}){
 
     if(loading){
         return <div className="dark:text-white">Carregando...</div>
@@ -14,7 +14,7 @@ function ListaTarefas({loading, setReload, tarefas, setTarefas}){
                 <ul>
                     {tarefas.map((tarefa) => (
                         <li key={tarefa.id}>
-                            <Tarefa tarefa={tarefa} setTarefas={setTarefas} tarefas={tarefas} setReload={setReload}/>
+                            <Tarefa tarefa={tarefa} setLoading={setLoading} />
                         </li>
                     ))}
                 </ul>

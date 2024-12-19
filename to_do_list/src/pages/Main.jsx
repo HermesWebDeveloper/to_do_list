@@ -6,7 +6,6 @@ import axios from "axios";
 
 function Main() {
 
-  const [reload, setReload] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
   const [tarefas, setTarefas] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -16,7 +15,6 @@ function Main() {
         try {
             const response = await axios.get(`${import.meta.env.VITE_URL_API}/v1/tarefas/`);
             setTarefas(response.data);
-            setReload(false);
             setLoading(false);
         } catch (error) {
             console.log('Erro ao buscar tarefas: ', error);
@@ -24,7 +22,7 @@ function Main() {
     }
 
     fetchTarefas();
-}, [reload]);
+}, [loading]);
 
   return (
     <>
@@ -33,10 +31,10 @@ function Main() {
                 <Header />
             </div>  
             <div className="mb-5">
-                <NovaTarefa reload={reload} setReload={setReload} tarefas={tarefas} setTarefas={setTarefas} />
+                <NovaTarefa tarefas={tarefas} setTarefas={setTarefas} setLoading={setLoading} />
             </div>
             <div>
-              <ListaTarefas reload={reload} setReload={setReload} tarefas={tarefas} setTarefas={setTarefas} loading={loading} />
+              <ListaTarefas tarefas={tarefas} setTarefas={setTarefas} loading={loading} setLoading={setLoading} />
             </div>
         </div> 
     </>
